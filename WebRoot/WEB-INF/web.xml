@@ -8,10 +8,19 @@
     <servlet-name>CheckServer</servlet-name>
     <servlet-class>com.shxy.votes.servlet.CheckServer</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>getVoteList</servlet-name>
+    <servlet-class>com.shxy.votes.servlet.getVoteList</servlet-class>
+  </servlet>
+
 
   <servlet-mapping>
     <servlet-name>CheckServer</servlet-name>
     <url-pattern>/api/checkserver</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>getVoteList</servlet-name>
+    <url-pattern>/api/getvotelist</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
