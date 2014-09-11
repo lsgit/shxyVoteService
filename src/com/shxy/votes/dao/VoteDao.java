@@ -17,16 +17,18 @@ public class VoteDao {
 	 * @param flag 0代表已结束的投票项目 1 代表正在进行的投票项目
 	 * @return 投票项目列表
 	 */
-	public List<VoteBean> voteList(int flag){
+	public List<VoteBean> voteList(int flag,int page){
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		List<VoteBean> voteList = new ArrayList<VoteBean>();
 		try{
 			conn = JdbcUtils.getConnection();
-			String sql = "select vote_id,vote_title,vote_text,rule_id,vote_date from t_vote where vote_flag=?";
+			String sql = "select vote_id,vote_title,vote_text,rule_id,vote_date from t_vote where vote_flag=? ORDER BY vote_id DESC limit ?,?";
 			stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, flag);
+			stmt.setInt(2, (page-1)*10);
+			stmt.setInt(3, 10);
 			rs = stmt.executeQuery();
 			while(rs.next()){
 				VoteBean voteBean = new VoteBean();
@@ -35,6 +37,7 @@ public class VoteDao {
 				voteBean.setText(rs.getString("vote_text"));
 				VotingRuleBean rule = new RuleDao().getRule(rs.getInt("rule_id"));
 				voteBean.setDate(rs.getString("vote_date"));
+				voteBean.setVoteFlag(flag);
 				voteBean.setRule(rule);
 				voteList.add(voteBean);
 			}

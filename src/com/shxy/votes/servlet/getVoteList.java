@@ -21,7 +21,10 @@ public class getVoteList extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		List<VoteBean> list = new VoteDao().voteList(1);
+		request.setCharacterEncoding("utf-8");
+		int page = Integer.parseInt(request.getParameter("page"));
+		
+		List<VoteBean> list = new VoteDao().voteList(1,page);
 		response.setContentType("text/html;charset=utf-8");
 		response.setCharacterEncoding("utf-8");
 		PrintWriter out = response.getWriter();
