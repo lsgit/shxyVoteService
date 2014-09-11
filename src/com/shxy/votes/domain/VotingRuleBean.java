@@ -1,5 +1,9 @@
 package com.shxy.votes.domain;
-
+/**
+ * Õ∂∆±πÊ‘ÚBean
+ * @author lanou3g
+ *
+ */
 public class VotingRuleBean {
 	private int id;
 	public int getId() {
