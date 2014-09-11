@@ -1,6 +1,6 @@
 package com.shxy.votes.domain;
 /**
- * ͶƱ��ĿBean
+ * 投票Bean
  * @author lanou3g
  *
  */
@@ -41,4 +41,11 @@ public class VoteBean {
 	private String text;
 	private VotingRuleBean rule;
 	private String date;
+	private int voteFlag;
+	public int getVoteFlag() {
+		return voteFlag;
+	}
+	public void setVoteFlag(int voteFlag) {
+		this.voteFlag = voteFlag;
+	}
 }

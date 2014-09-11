@@ -1,23 +1,23 @@
 package com.shxy.votes.domain;
 
 /**
- * ºòÑ¡ÈËBean
+ * è·é€‰äººBean
  * @author lanou3g
  *
  */
 public class CandidateBean {
 	private int id;
 	/**
-	 * Í¶Æ±ÏîÄ¿±íid
+	 * æŠ•ç¥¨é¡¹ç›®id
 	 */
 	private int voteId;
 	private String name;
 	/**
-	 * ×îÖÕµÃ·Ö
+	 * æœ€ç»ˆå¾—åˆ†
 	 */
 	private double finalScire;
 	/**
-	 * ×îÖÕµÃÆ±
+	 * æœ€ç»ˆé¡¹ç›®
 	 */
 	private int finalTicks;
 	

@@ -1,6 +1,6 @@
 package com.shxy.votes.domain;
 /**
- * Í¶Æ±¹æÔòBean
+ * æŠ•ç¥¨è§„åˆ™Bean
  * @author lanou3g
  *
  */

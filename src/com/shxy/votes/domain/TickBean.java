@@ -1,25 +1,25 @@
 package com.shxy.votes.domain;
 /**
- * 一个投票Bean
+ * 涓�涓エBean
  * @author lanou3g
  *
  */
 public class TickBean {
 	private int id;
 	/**
-	 * 投票项目表id
+	 * 鎶曠エ椤圭洰id
 	 */
 	private int voteId;
 	/**
-	 * 选投票id
+	 * 鑾烽�変汉id
 	 */
 	private int canadidateId;
 	/**
-	 * 一次得分
+	 * 鍒嗘暟
 	 */
 	private double score;
 	/**
-	 * 用户唯一标识
+	 * 鐢ㄦ埛鍞竴鏍囪瘑识
 	 */
 	private String imei;
 	
