@@ -10,20 +10,26 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.alibaba.fastjson.JSON;
+import com.shxy.votes.dao.CandiadateDao;
 import com.shxy.votes.dao.VoteDao;
+import com.shxy.votes.domain.CandidateBean;
 import com.shxy.votes.domain.VoteBean;
 
-public class getVoteList extends HttpServlet {
+public class GetCandateList extends HttpServlet {
+
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doPost(request, response);
 	}
+
+	
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		request.setCharacterEncoding("utf-8");
-		int page = Integer.parseInt(request.getParameter("page"));
-		List<VoteBean> list = new VoteDao().voteList(1,page);
+		int voteid = Integer.parseInt(request.getParameter("vid"));
+		String imei = request.getParameter("imei");
+		List<CandidateBean> list = new CandiadateDao().getCandList(voteid, imei);
 		response.setContentType("text/html;charset=utf-8");
 		response.setCharacterEncoding("utf-8");
 		PrintWriter out = response.getWriter();

@@ -13,14 +13,15 @@ public class CandiadateDao
 {
 	public List<CandidateBean> getCandList(int voteId,String imei){
 		//判断当前的投票类型 确定SQL 语句 1投票项目 0评分项目
-		int flag = 1;
+		
+		int flag = new VoteDao().getVoteType(voteId);
 		String sql = null;
 		switch (flag) {
-		case 1:
-			sql = "select vote_id,candidate_name from t_candidate where not EXISTS (select candidate_id from  t_tick where tick_imei = '?') and vote_id = ?;";
-			break;
 		case 0:
-			sql = "select candidate_name,candidate_id from t_candidate where candidate_id not in (select candidate_id from  t_tick where tick_imei = ? and vote_id = ? ) and vote_id = ?;";
+			sql = "select candidate_id,candidate_name from t_candidate where candidate_id not in (select candidate_id from t_tick where tick_imei = ?) and vote_id = ?";
+			break;
+		case 1:
+			sql = "select candidate_name,candidate_id from t_candidate where not exists (select candidate_id from t_tick where tick_imei = ? and vote_id = ?)and vote_id = ?";
 			break;
 		default:
 			break;
@@ -35,15 +36,17 @@ public class CandiadateDao
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, imei);
 			stmt.setInt(2, voteId);
-			if(flag==0){
+			if(flag==1){
 				stmt.setInt(3, voteId);
 			}
 			rs = stmt.executeQuery();
+System.out.println(sql);
 			while(rs.next()){
 				CandidateBean cander = new CandidateBean();
 				cander.setId(rs.getInt("candidate_id"));
 				cander.setName(rs.getString("candidate_name"));
 				cander.setVoteId(voteId);
+System.out.println(cander.getName());
 				candList.add(cander);
 			}
 			return candList;

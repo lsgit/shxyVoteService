@@ -15,7 +15,7 @@ public class CandidateBean {
 	/**
 	 * 最终得分
 	 */
-	private double finalScire;
+	private double finalScore;
 	/**
 	 * 最终项目
 	 */
@@ -39,11 +39,11 @@ public class CandidateBean {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public double getFinalScire() {
-		return finalScire;
+	public double getFinalScore() {
+		return finalScore;
 	}
-	public void setFinalScire(double finalScire) {
-		this.finalScire = finalScire;
+	public void setFinalScore(double finalScire) {
+		this.finalScore = finalScire;
 	}
 	public int getFinalTicks() {
 		return finalTicks;

@@ -12,6 +12,11 @@
     <servlet-name>getVoteList</servlet-name>
     <servlet-class>com.shxy.votes.servlet.getVoteList</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>GetCandateList</servlet-name>
+    <servlet-class>com.shxy.votes.servlet.GetCandateList</servlet-class>
+  </servlet>
+
 
 
   <servlet-mapping>
@@ -21,6 +26,10 @@
   <servlet-mapping>
     <servlet-name>getVoteList</servlet-name>
     <url-pattern>/api/getvotelist</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>GetCandateList</servlet-name>
+    <url-pattern>/api/getcandidatelist</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>

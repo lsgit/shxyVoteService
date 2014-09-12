@@ -48,4 +48,32 @@ public class VoteDao {
 		}
 		return null;
 	}
+	/**
+	 * 获取当前投票项目的类型 0评分 1投票
+	 * @param voteid
+	 * @return
+	 */
+	public int getVoteType(int voteid){
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		int flag = 1;
+		try{
+			conn = JdbcUtils.getConnection();
+			String sql = "select rule_judge from t_rule,t_vote where t_rule.rule_id = t_vote.rule_id and t_vote.vote_id=?";
+			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, voteid);
+			rs = stmt.executeQuery();
+			if(rs.next()){
+				return rs.getInt("rule_judge");
+			}
+			return flag;
+		}catch(Exception e){
+		}finally{
+			JdbcUtils.release(rs, stmt, conn);
+		}
+		return 0;
+	}
+	
+	
 }
