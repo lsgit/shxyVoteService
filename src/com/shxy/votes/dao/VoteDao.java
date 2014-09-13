@@ -75,5 +75,36 @@ public class VoteDao {
 		return 0;
 	}
 	
+	public List<VoteBean> voteALLList(int page){
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		List<VoteBean> voteList = new ArrayList<VoteBean>();
+		try{
+			conn = JdbcUtils.getConnection();
+			String sql = "select vote_id,vote_title,vote_text,rule_id,vote_date,vote_flag from t_vote ORDER BY vote_id DESC limit ?,?";
+			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, (page-1)*10);
+			stmt.setInt(2, 10);
+			rs = stmt.executeQuery();
+			while(rs.next()){
+				VoteBean voteBean = new VoteBean();
+				voteBean.setId(rs.getInt("vote_id"));
+				voteBean.setTitle(rs.getString("vote_title"));
+				voteBean.setText(rs.getString("vote_text"));
+				VotingRuleBean rule = new RuleDao().getRule(rs.getInt("rule_id"));
+				voteBean.setDate(rs.getString("vote_date"));
+				voteBean.setVoteFlag(rs.getInt("vote_flag"));
+				voteBean.setRule(rule);
+				voteList.add(voteBean);
+			}
+			return voteList;
+		}catch(Exception e){
+		}finally{
+			JdbcUtils.release(rs, stmt, conn);
+		}
+		return null;
+	}
+	
 	
 }

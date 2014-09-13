@@ -23,7 +23,7 @@ public class getVoteList extends HttpServlet {
 
 		request.setCharacterEncoding("utf-8");
 		int page = Integer.parseInt(request.getParameter("page"));
-		List<VoteBean> list = new VoteDao().voteList(1,page);
+		List<VoteBean> list = new VoteDao().voteALLList(page);
 		response.setContentType("text/html;charset=utf-8");
 		response.setCharacterEncoding("utf-8");
 		PrintWriter out = response.getWriter();
