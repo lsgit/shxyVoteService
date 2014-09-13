@@ -40,13 +40,13 @@ public class CandiadateDao
 				stmt.setString(3, imei);
 			}
 			rs = stmt.executeQuery();
-//System.out.println(sql);
+System.out.println(sql);
 			while(rs.next()){
 				CandidateBean cander = new CandidateBean();
 				cander.setId(rs.getInt("candidate_id"));
 				cander.setName(rs.getString("candidate_name"));
 				cander.setVoteId(voteId);
-//System.out.println(cander.getName());
+System.out.println(cander.getName());
 				candList.add(cander);
 			}
 			return candList;
