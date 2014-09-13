@@ -21,7 +21,7 @@ public class CandiadateDao
 			sql = "select candidate_id,candidate_name from t_candidate where candidate_id not in (select candidate_id from t_tick where tick_imei = ?) and vote_id = ?";
 			break;
 		case 1:
-			sql = "select candidate_name,candidate_id from t_candidate where not exists (select candidate_id from t_tick where tick_imei = ? and vote_id = ?)and vote_id = ?";
+			sql = "select DISTINCT t_candidate.candidate_id,t_candidate.candidate_name from t_candidate join t_tick on t_tick.vote_id = t_candidate.vote_id join t_vote on t_vote.vote_id = t_candidate.vote_id join t_rule on t_rule.rule_id = t_vote.rule_id where t_rule.rule_ticks > (select count(*) from t_tick where t_tick.vote_id =t_candidate.vote_id and t_tick.tick_imei = ? ) and t_candidate.vote_id = ? and t_candidate.candidate_id not in (select candidate_id from t_tick where t_tick.tick_imei = ? );";
 			break;
 		default:
 			break;
@@ -37,16 +37,16 @@ public class CandiadateDao
 			stmt.setString(1, imei);
 			stmt.setInt(2, voteId);
 			if(flag==1){
-				stmt.setInt(3, voteId);
+				stmt.setString(3, imei);
 			}
 			rs = stmt.executeQuery();
-System.out.println(sql);
+//System.out.println(sql);
 			while(rs.next()){
 				CandidateBean cander = new CandidateBean();
 				cander.setId(rs.getInt("candidate_id"));
 				cander.setName(rs.getString("candidate_name"));
 				cander.setVoteId(voteId);
-System.out.println(cander.getName());
+//System.out.println(cander.getName());
 				candList.add(cander);
 			}
 			return candList;

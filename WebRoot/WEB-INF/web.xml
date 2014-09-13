@@ -16,6 +16,11 @@
     <servlet-name>GetCandateList</servlet-name>
     <servlet-class>com.shxy.votes.servlet.GetCandateList</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>PullTick</servlet-name>
+    <servlet-class>com.shxy.votes.servlet.PullTick</servlet-class>
+  </servlet>
+
 
 
 
@@ -30,6 +35,10 @@
   <servlet-mapping>
     <servlet-name>GetCandateList</servlet-name>
     <url-pattern>/api/getcandidatelist</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>PullTick</servlet-name>
+    <url-pattern>/api/pulltick</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>

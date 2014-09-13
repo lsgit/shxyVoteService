@@ -23,7 +23,7 @@ public class RuleDao {
 	public VotingRuleBean getRule(int id){
 		try{
 			conn = JdbcUtils.getConnection();
-			String sql = "select rule_id,rule_judge,rule_range from t_rule where rule_id=?";
+			String sql = "select rule_id,rule_judge,rule_range,rule_ticks from t_rule where rule_id=?";
 			stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, id);
 			rs = stmt.executeQuery();
@@ -33,6 +33,7 @@ public class RuleDao {
 				ruleBean.setId(rs.getInt("rule_id"));
 				ruleBean.setJudge(rs.getInt("rule_judge"));
 				ruleBean.setRange(rs.getString("rule_range"));
+				ruleBean.setTickCount(rs.getInt("rule_ticks"));
 				return ruleBean;
 			}
 			return ruleBean;

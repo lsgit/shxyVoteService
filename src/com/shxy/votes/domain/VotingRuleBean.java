@@ -26,4 +26,11 @@ public class VotingRuleBean {
 	}
 	private int judge;
 	private String range;
+	private int tickCount;
+	public int getTickCount() {
+		return tickCount;
+	}
+	public void setTickCount(int tickCount) {
+		this.tickCount = tickCount;
+	}
 }

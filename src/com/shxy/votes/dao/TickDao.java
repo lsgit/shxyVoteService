@@ -2,10 +2,9 @@ package com.shxy.votes.dao;
 
 public class TickDao 
 {
-	public void show(){
-		
-	}
-	public void show2(){
-		
+	public boolean pullTick(int vid,int cid,String imei )
+	{
+		boolean flag = true;
+		return flag;
 	}
 }
