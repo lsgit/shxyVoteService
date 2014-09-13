@@ -23,7 +23,6 @@ public class TickDao
 	public boolean pullTick(int vid,int cid,String imei,double score)
 	{
 		boolean flag = false;
-		
 		//判断能否插入 若不能跳出函数直接返回false 插入规则当前返回的候选人列表不为空
 		CandiadateDao cdao = new CandiadateDao();
 		if(cdao.getCandList(vid, imei).size()==0){
